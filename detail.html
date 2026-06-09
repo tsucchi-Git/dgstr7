@@ -48,6 +48,7 @@
     cursor:pointer;
   }
     .sound-image{
+      margin-top:5px;
       width: 50px;
       cursor: pointer;
       text-align: center; /* 横方向の中央揃え */
@@ -121,10 +122,14 @@
       </tr>
     </tbody>
   </table>
-  <img src="icon/headphone.png"
+  <p class="sound-image">
+     <img id="tomap" onclick="openModal()" width="20%" alt="音声ガイド" >
+  </p>
+
+   <!-- <img src="icon/headphone.png"
       class="sound-image"
       onclick="openModal()"
-      alt="音声ガイド">
+      alt="音声ガイド"> -->
 
   <!-- ポップアップ -->
   <div id="audioModal" class="modal">
