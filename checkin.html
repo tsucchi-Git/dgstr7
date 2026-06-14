@@ -265,6 +265,7 @@
               }
             }
             //当該スポットのデータをウェブストレージに保存して、詳細ページに遷移
+            let s_id=markerList[k].id              //スポットのID変数に代入
             let s_lat=markerList[k].lat              //スポットの北緯を変数に代入
             let s_lng=markerList[k].lng              //スポットの東経を変数に代入
             let s_title=markerList[k].name;          //スポットの名称を変数に代入
@@ -276,7 +277,7 @@
             let s_yesno=markerList[k].yn;         //スポットの訪問の有無を変数に代入
             let s_flag=1                          //スポットの詳細を読み込む際：チェックインのページから→s_flag=1、スタンプ帳とスポットリストのページから→s_flag=1
             //詳細ボタンがクリックされたときに、当該スポットのデータの一部を配列に格納
-            let spot_array=[s_lat,s_lng,s_title,s_img,s_address,s_address_detail,s_era,s_explanation,s_yesno,s_flag];
+            let spot_array=[s_id,s_lat,s_lng,s_title,s_img,s_address,s_address_detail,s_era,s_explanation,s_yesno,s_flag];
             //ローカルストレージに「selected_spot%地域番号」のキーで選択されたスポットのデータ配列を保存
               key_select="selected_spot%" + area_no
             //配列をJSONデータに返還し、json_stringという変数に一括代入
