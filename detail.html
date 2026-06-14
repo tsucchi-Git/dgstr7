@@ -100,7 +100,7 @@
    <!-- <li><a href=”#”>Blog</a></li> -->
     </ul>
    </nav>
-   <div class="page-title">スポットの詳細2</div>
+   <div class="page-title">スポットの詳細</div>
   <table border="1" >
     <tbody>
       <tr>
@@ -162,7 +162,6 @@
      <img id="tomap" onclick="jump_to_checkin()" width="20%" alt="地図へ" >
   </p>
   <script>
-      alert('ここkara');
       //ローカルストレージからデータ（タイトル、画像ファイル名、住所、場所の詳細、年代、説明、訪問の有無）の取り出し
       if (window.localStorage){
         //エリア番号の読み取り
@@ -171,10 +170,7 @@
         key_select="selected_spot%" + area_no
         let json=localStorage.getItem(key_select); //ローカルストレージからキー「selected-spot%地域番号」で保存したデータを取得
         let spot_array=JSON.parse(json);  //取得したJSONデータを配列に変換し、配列名をspot_array（任意）とする
-        alert('ここまで');
         var [s_id,s_lat,s_lng,s_title,s_img,s_address,s_address_detail,s_era,s_explanation,s_yesno,s_flag]=spot_array; //配列の要素を変数に代入
-        alert('id=' + s_id);
-        alert('マーカー:' + s_lat + ',' + s_lng);
         //alert(s_title + ',' + s_img  + ',' + s_address + ',' + s_address_detail + ',' + s_era + ',' + s_explanation + ',' + s_yesno);
         //高解像度の画像ある場合は、これを表示する。
         const str=s_img;
@@ -227,11 +223,11 @@
         /* 以下は音声ガイド用 */
         const modal = document.getElementById("audioModal");
         const audio = document.getElementById("audio");
-        // if(s_id<10){
-        //   audio.src="sound/" + "0" + s_id" + "_voice.mp3";
-        // }else{
+        if(s_id<10){
+          audio.src="sound/" + "0" + s_id + "_voice.mp3";
+        }else{
            audio.src="sound/" + s_id + "_voice.mp3";
-        // }
+        }
         function openModal(){
             modal.style.display = "block";
         }
