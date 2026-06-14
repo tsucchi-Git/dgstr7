@@ -253,7 +253,7 @@
         function spot_jamp_detail(i){
             let s_explanation=array[i].exp;//スポットに関する説明を変数に代入
             let s_flag=-1 //スポットの詳細を読み込む際：チェックインのページから→s_flag=1、スタンプ帳とスポットリストのページから→s_flag=-1
-            let spot_array=[s_lat,s_lng,s_title,s_img,s_address,s_address_detail,s_era,s_explanation,s_yesno,s_flag];//詳細ボタンがクリックされたときに、当該スポットのデータの一部を配列に格納
+            let spot_array=[s_number,s_lat,s_lng,s_title,s_img,s_address,s_address_detail,s_era,s_explanation,s_yesno,s_flag];//詳細ボタンがクリックされたときに、当該スポットのデータの一部を配列に格納
             //ローカルストレージに「spot-selected」のキーで選択されたスポットのデータ配列を保存
             if(window.localStorage){
               //配列をJSONデータに返還し、json_stringという変数に一括代入
