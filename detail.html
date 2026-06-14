@@ -170,6 +170,7 @@
         key_select="selected_spot%" + area_no
         let json=localStorage.getItem(key_select); //ローカルストレージからキー「selected-spot%地域番号」で保存したデータを取得
         let spot_array=JSON.parse(json);  //取得したJSONデータを配列に変換し、配列名をspot_array（任意）とする
+        alert('ここまで');
         var [s_id,s_lat,s_lng,s_title,s_img,s_address,s_address_detail,s_era,s_explanation,s_yesno,s_flag]=spot_array; //配列の要素を変数に代入
         alert('id=' + s_id);
         alert('マーカー:' + s_lat + ',' + s_lng);
