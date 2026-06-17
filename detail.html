@@ -315,7 +315,12 @@
             }else{
               video.src="video/" + s_id + "_video.mp4";
             }
-            
+            //ビデオ再生アイコンを表示
+            document.getElementById("video-button").src ="icon/video-button.png"
+            //再生するビデオがない場合はアイコンを非表示
+            video.onerror = function(){
+              document.getElementById("video-button").style.display="none";
+            }
             function openVideo() {
             videomodal.style.display = "block";
             video.play();
