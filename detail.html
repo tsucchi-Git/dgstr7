@@ -124,7 +124,7 @@
  <body>
   <nav>
     <ul>
-    <li class=”current”><a href='home.html'>ホーム</a></li>
+    <li class=”current”><a href="home.html">ホーム</a></li>
     <li><a href='stampnote.html'>スタンプ帳</a></li>
     <li><a href='spotlist.html'>リスト</a></li>
    <!-- <li><a href=”#”>Blog</a></li> -->
@@ -282,7 +282,7 @@
         function closeModal(){
             audio.pause();
             audio.currentTime = 0;
-            modal.style.display = "none";
+            audiomodal.style.display = "none";
         }
 
         function playAudio(){
@@ -321,7 +321,7 @@
               video.src="video/" + s_id + "_video.mp4";
             }
             function openVideo() {
-            videoomodal.style.display = "block";
+            videomodal.style.display = "block";
             video.play();
         }
         
@@ -330,7 +330,7 @@
             video.pause();
             video.currentTime = 0;
         
-            modal.style.display = "none";
+            videomodal.style.display = "none";
         }
         
     </script>
