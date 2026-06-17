@@ -151,8 +151,10 @@
     </tbody>
   </table>
   <p class="image-container">
-     <img src="icon/voice-button.png" onclick="openModal()" width="10%" alt="音声ガイド" >
-     <img src="icon/video-button.png" onclick="openVideo()" width="10%" alt="ビデオ再生" >
+     <!-- <img src="icon/voice-button.png" onclick="openModal()" width="10%" alt="音声ガイド" > -->
+     <!-- <img src="icon/video-button.png" onclick="openVideo()" width="10%" alt="ビデオ再生" > -->
+    <img id="voice-button" onclick="openModal()" width="10%" alt="" > 
+    <img id="video-button" onclick="openVideo()" width="10%" alt="" >
   </p>
 
   
@@ -262,6 +264,7 @@
         /* 以下は音声ガイド用 */
         const audiomodal = document.getElementById("audioModal");
         const audio = document.getElementById("audio");
+        voice-button.src="icon/voice-button.png";
         if(s_id<10){
           audio.src="sound/" + "0" + s_id + "_voice.mp3";
         }else{
@@ -312,6 +315,7 @@
             }else{
               video.src="video/" + s_id + "_video.mp4";
             }
+            
             function openVideo() {
             videomodal.style.display = "block";
             video.play();
