@@ -30,7 +30,7 @@
     vertical-align: middle; /* 縦方向の中央揃え */
     font-size: 70%;
     overflow-wrap: break-word;
-    width:100%
+    width:100%;
   }
   .explanation{
     margin-top:5px;
@@ -54,7 +54,7 @@
       text-align: center; /* 横方向の中央揃え */
   }
 
-  /* 背景 *（音声再生、ビデオ再生共通）*/
+  /* 背景（音声再生、ビデオ再生共通）*/
   .modal{
       display:none;
       position:fixed;
@@ -124,7 +124,7 @@
  <body>
   <nav>
     <ul>
-    <li class=”current”><a href=home.html>ホーム</a></li>
+    <li class=”current”><a href='home.html'>ホーム</a></li>
     <li><a href='stampnote.html'>スタンプ帳</a></li>
     <li><a href='spotlist.html'>リスト</a></li>
    <!-- <li><a href=”#”>Blog</a></li> -->
@@ -211,7 +211,7 @@
         //エリア番号の読み取り
         let area_no=localStorage.getItem('area_no%');
         //ローカルストレージからキー「selected-spot%地域番号」で基礎データを読み込み配列arrayに格納
-        key_select="selected_spot%" + area_no
+        let key_select="selected_spot%" + area_no
         let json=localStorage.getItem(key_select); //ローカルストレージからキー「selected-spot%地域番号」で保存したデータを取得
         let spot_array=JSON.parse(json);  //取得したJSONデータを配列に変換し、配列名をspot_array（任意）とする
         var [s_id,s_lat,s_lng,s_title,s_img,s_address,s_address_detail,s_era,s_explanation,s_yesno,s_flag]=spot_array; //配列の要素を変数に代入
@@ -233,7 +233,10 @@
         // if(img_high.width>0){
         //   //高解像度のファイルがが存在する
         //   //alert('あり：image/' + file_name2);
-        var e_img=document.getElementById("image2");e_img.src='image/' + file_name2 ;//高解像の画像ファイルを更新
+        var e_img=document.getElementById("image2");
+        e_img.onerror = function(){this.src = 'image/' + s_img;
+        };
+        e_img.src='image/' + file_name2 ;//高解像の画像ファイルを更新
         // }else{
         //   //高解像度のファイルがが存在しない
         //   //alert('なし：image/' + file_name1);
@@ -265,7 +268,7 @@
           }
         }
         /* 以下は音声ガイド用 */
-        const modal = document.getElementById("audioModal");
+        const audiomodal = document.getElementById("audioModal");
         const audio = document.getElementById("audio");
         if(s_id<10){
           audio.src="sound/" + "0" + s_id + "_voice.mp3";
@@ -273,7 +276,7 @@
            audio.src="sound/" + s_id + "_voice.mp3";
         }
         function openModal(){
-            modal.style.display = "block";
+            audiomodal.style.display = "block";
         }
 
         function closeModal(){
@@ -300,14 +303,17 @@
             document.getElementById("volumeValue").textContent = value + "%";
         }
 
-        /* 背景クリックで閉じる */
+        /* 背景クリックで閉じる (音声再生とビデオ再生共通)*/
         window.onclick = function(event){
-            if(event.target == modal){
+            if(event.target == audioModal){
                 closeModal();
+            }
+            if(event.target == videoModal){
+                closeVideo();
             }
         }
     //ビデオ再生
-            const modal = document.getElementById("videoModal");
+            const videomodal = document.getElementById("videoModal");
             const video = document.getElementById("myVideo");
             if(s_id<10){
               video.src="video/" + "0" + s_id + "_video.mp4";
@@ -315,9 +321,7 @@
               video.src="video/" + s_id + "_video.mp4";
             }
             function openVideo() {
-            document.getElementById("videoModal").style.display = "block";
-        
-            const video = document.getElementById("myVideo");
+            videoomodal.style.display = "block";
             video.play();
         }
         
@@ -329,14 +333,6 @@
             modal.style.display = "none";
         }
         
-        // 背景クリックで閉じる
-        window.onclick = function(event) {
-            const modal = document.getElementById("videoModal");
-        
-            if (event.target === modal) {
-                closeVideo();
-            }
-        }
     </script>
 </body>
 </html>
