@@ -47,28 +47,16 @@
     text-align: center; /* 横方向の中央揃え */
     cursor:pointer;
   }
+  /* 音声再生ボタンとビデオ再生ボタンを横並びにする */
   .image-container{
       display: flex;
       justify-content: center; /* 中央寄せ */
-      gap: 30px;               /* 画像間の間隔 */
+      gap: 50px;               /* 画像間の間隔 */
   }
   .image-container img{
-      width: 30px;            /* 画像サイズ */
+      width: 50px;            /* 画像サイズ */
       height: auto;
   }  
-  .sound-image{
-      margin-top:5px;
-      margin-bottom:-5px;
-      cursor: pointer;
-      text-align: center; /* 横方向の中央揃え */
-  }
-  .video-image{
-      margin-top:5px;
-      margin-bottom:-5px;
-      cursor: pointer;
-      text-align: center; /* 横方向の中央揃え */
-  } 
-
   /* 背景（音声再生、ビデオ再生共通）*/
   .modal{
       display:none;
