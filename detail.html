@@ -284,10 +284,6 @@
             audio.play();
         }
 
-        // function pauseAudio(){
-        //     audio.pause();
-        // }
-
         function stopAudio(){
             audio.pause();
             audio.currentTime = 0;
@@ -315,9 +311,9 @@
             }else{
               video.src="video/" + s_id + "_video.mp4";
             }
-            //ビデオ再生アイコンを表示
+            //ビデオ再生ボタンを表示する
             document.getElementById("video-button").src ="icon/video-button.png"
-            //再生するビデオがない場合はアイコンを非表示
+            //再生するビデオがない場合はビデオ再生ボタンを非表示にする
             video.onerror = function(){
               document.getElementById("video-button").style.display="none";
             }
