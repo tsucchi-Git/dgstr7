@@ -47,7 +47,13 @@
     text-align: center; /* 横方向の中央揃え */
     cursor:pointer;
   }
-    .sound-image{
+  .sound-image{
+      margin-top:5px;
+      margin-bottom:-5px;
+      cursor: pointer;
+      text-align: center; /* 横方向の中央揃え */
+  }
+  .video-image{
       margin-top:5px;
       margin-bottom:-5px;
       cursor: pointer;
@@ -92,11 +98,11 @@
   }
   /* ビデオ再生用 */
     /* 動画再生ボタン */
-    .open-btn {
+    /* .open-btn {
         padding: 12px 24px;
         font-size: 10px;
         cursor: pointer;
-    }
+    } */
      /* ポップの背景 */
     .modal-content-v {
         position: relative;
@@ -159,9 +165,12 @@
   </p>
 
   <!-- ビデオ再生ボタンの配置 -->
-  <button class="open-btn" onclick="openVideo()">
+  <p class="video-image">
+     <img src="icon/video-button.png" onclick="openVideo()" width="10%" alt="ビデオ再生" >
+  </p>  
+   <!-- <button class="open-btn" onclick="openVideo()">
       動画を見る
-  </button>
+  </button> -->
   
    <!-- 音声再生用ポップアップ -->
   <div id="audioModal" class="modal">
