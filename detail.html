@@ -47,7 +47,16 @@
     text-align: center; /* 横方向の中央揃え */
     cursor:pointer;
   }
-  .sound-image{
+  .image-container{
+      display: flex;
+      justify-content: center; /* 中央寄せ */
+      gap: 30px;               /* 画像間の間隔 */
+  }
+  .image-container img{
+      width: 30px;            /* 画像サイズ */
+      height: auto;
+  }  
+  /* .sound-image{
       margin-top:5px;
       margin-bottom:-5px;
       cursor: pointer;
@@ -58,7 +67,7 @@
       margin-bottom:-5px;
       cursor: pointer;
       text-align: center; /* 横方向の中央揃え */
-  }
+  } */
 
   /* 背景（音声再生、ビデオ再生共通）*/
   .modal{
@@ -159,7 +168,11 @@
       </tr>
     </tbody>
   </table>
-  <!-- 音声再生ボタンの配置 -->
+  <div class="image-container">
+     <img src="icon/voice-button.png" onclick="openModal()" width="10%" alt="音声ガイド" >
+     <img src="icon/video-button.png" onclick="openVideo()" width="10%" alt="ビデオ再生" >
+  </div>
+  <!-- <!-- 音声再生ボタンの配置 -->
   <p class="sound-image">
      <img src="icon/voice-button.png" onclick="openModal()" width="10%" alt="音声ガイド" >
   </p>
@@ -167,7 +180,7 @@
   <!-- ビデオ再生ボタンの配置 -->
   <p class="video-image">
      <img src="icon/video-button.png" onclick="openVideo()" width="10%" alt="ビデオ再生" >
-  </p>  
+  </p>   -->
    <!-- <button class="open-btn" onclick="openVideo()">
       動画を見る
   </button> -->
