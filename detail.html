@@ -156,7 +156,7 @@
         cursor:pointer;
         line-height:1;
     }
-    #guideBtn{
+    #noteBtn{
       font-size:24px;
       padding:10px 20px;
     }
@@ -273,9 +273,9 @@
 </div>
 <!-- 一口メモ用 -->
   <!-- ガイドボタン -->
-  <button id="guideBtn">ガイド</button>
+  <button id="noteBtn">ガイド</button>
   <!-- ポップアップ -->
-  <div id="guidePopup" class="popup">
+  <div id="notePopup" class="popup">
   <div class="popup-content">
     <span id="closeBtn">×</span>
     <div class="popup-body">
@@ -289,7 +289,7 @@
           src="icon/avatar_close.png"
           class="avatar"
         >
-        <audio id="guideAudio">
+        <audio id="noteAudio">
           <source src="note/01_note.mp3" type="audio/mpeg">
         </audio>
           <br>
@@ -442,10 +442,10 @@
             videomodal.style.display = "none";
         }
     //一口メモ
-      const popup = document.getElementById("guidePopup");
-      const guideBtn = document.getElementById("guideBtn");
+      const popup = document.getElementById("notePopup");
+      const guideBtn = document.getElementById("noteBtn");
       const closeBtn = document.getElementById("closeBtn");
-      const audio = document.getElementById("guideAudio");
+      const noteaudio = document.getElementById("noteAudio");
       const playBtn = document.getElementById("playBtn");
       const avatar = document.getElementById("avatar");
       let mouthAnimation;
@@ -454,13 +454,13 @@
       };
       closeBtn.onclick = () => {
           popup.style.display = "none";
-          audio.pause();
-          audio.currentTime = 0;
+          noteaudio.pause();
+          noteaudio.currentTime = 0;
           clearInterval(mouthAnimation);
           avatar.src = "icon/avatar_close.png";
       };
       playBtn.onclick = () => {
-          audio.play();
+          noteaudio.play();
           mouthAnimation = setInterval(() => {
               if (
                   avatar.src.includes("icon/avatar_close.png")
@@ -471,7 +471,7 @@
               }
           }, 200);
       };
-      audio.addEventListener("ended", () => {
+      noteaudio.addEventListener("ended", () => {
           clearInterval(mouthAnimation);
           mouthAnimation = null;
           avatar.src = "icon/avatar_close.png";
