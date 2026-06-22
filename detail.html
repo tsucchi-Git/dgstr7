@@ -234,6 +234,7 @@
      <!-- <img src="icon/video-button.png" onclick="openVideo()" width="10%" alt="ビデオ再生" > -->
     <img id="voice-button" onclick="openModal()" width="10%" alt="" > 
     <img id="video-button" onclick="openVideo()" width="10%" alt="" >
+    <img id="noteBtn" width="10%" alt="" >
   </p>
 
   
@@ -449,6 +450,7 @@
       const playBtn = document.getElementById("playBtn");
       const avatar = document.getElementById("avatar");
       let mouthAnimation;
+      guideBtn.src ="icon/note-button.png"
       guideBtn.onclick = () => {
           popup.style.display = "block";
       };
