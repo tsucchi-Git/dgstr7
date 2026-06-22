@@ -124,6 +124,79 @@
         width: 100%;
         height: auto;
     }
+ /* 一口メモ用 */
+    .popup{
+      display:none;
+      position:fixed;
+      left:0;
+      top:0;
+      width:100%;
+      height:100%;
+      background:rgba(0,0,0,0.5);
+    }
+    .popup-content{
+      background:white;
+      width:90%;      /* 固定幅 */
+      height:500px;     /* 固定高さ */
+      position:absolute;
+      left:50%;
+      top:50%;
+      transform:translate(-50%, -50%);
+      padding:20px;
+      text-align:center;
+      border-radius:10px;
+      box-sizing:border-box;
+    }
+    #closeBtn{
+        position:absolute;
+        top:10px;
+        right:15px;
+        font-size:30px;
+        font-weight:bold;
+        cursor:pointer;
+        line-height:1;
+    }
+    #guideBtn{
+      font-size:24px;
+      padding:10px 20px;
+    }
+    
+    #playBtn{
+      font-size:24px;
+      padding:10px 20px;
+      margin-top:30px;
+    }
+    .popup-body{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      margin-top:30px;
+    }
+    
+    .left-image{
+      height:450px;
+      position:relative;
+      z-index:2;
+      margin-right:-10px;
+    }
+    .left-image-container{
+      flex:7;
+    }
+    .right-area{
+      flex:1;  /* 右を狭く */
+      /* display:flex;
+      flex-direction:column; */
+      /* align-items:flex-end; /* 右寄せ */ 
+      /* justify-content:center; */
+    }
+    .avatar{
+      width:250px;
+      height:auto;
+      /* width:275px;
+      height:365px; */
+      object-fit:contain;
+     }  
  </style>
  <body>
   <nav>
@@ -198,8 +271,33 @@
 
     </div>
 </div>
-
-   
+<!-- 一口メモ用 -->
+  <!-- ガイドボタン -->
+  <button id="guideBtn">ガイド</button>
+  <!-- ポップアップ -->
+  <div id="guidePopup" class="popup">
+  <div class="popup-content">
+    <span id="closeBtn">×</span>
+    <div class="popup-body">
+      <div class="left-image-container">
+        <img src="note/01_memo.png" class="left-image" alt="説明画像">
+      </div>
+      <!-- 右側のアバター -->
+      <div class="right-area">
+        <img
+          id="avatar"
+          src="avatar_close1.png"
+          class="avatar"
+        >
+        <audio id="guideAudio">
+          <source src="note/01_memo.mp3" type="audio/mpeg">
+        </audio>
+          <br>
+          <button id="playBtn">再生</button>
+      </div>
+    </div>
+  </div>
+  <!-- 説明文 -->
   <div class="explanation">
     <p id="explain" ></p> 
   </div> 
@@ -343,7 +441,41 @@
         
             videomodal.style.display = "none";
         }
-        
+    //一口メモ
+      const popup = document.getElementById("guidePopup");
+      const guideBtn = document.getElementById("guideBtn");
+      const closeBtn = document.getElementById("closeBtn");
+      const audio = document.getElementById("guideAudio");
+      const playBtn = document.getElementById("playBtn");
+      const avatar = document.getElementById("avatar");
+      let mouthAnimation;
+      guideBtn.onclick = () => {
+          popup.style.display = "block";
+      };
+      closeBtn.onclick = () => {
+          popup.style.display = "none";
+          audio.pause();
+          audio.currentTime = 0;
+          clearInterval(mouthAnimation);
+          avatar.src = "icon/avatar_close.png";
+      };
+      playBtn.onclick = () => {
+          audio.play();
+          mouthAnimation = setInterval(() => {
+              if (
+                  avatar.src.includes("icon/avatar_close.png")
+              ) {
+                  avatar.src = "icon/avatar_open.png";
+              } else {
+                  avatar.src = "icon/avatar_close.png";
+              }
+          }, 200);
+      };
+      audio.addEventListener("ended", () => {
+          clearInterval(mouthAnimation);
+          mouthAnimation = null;
+          avatar.src = "icon/avatar_close.png";
+      });
     </script>
 </body>
 </html>
