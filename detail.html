@@ -289,7 +289,7 @@
         <span id="closeBtn">×</span>
         <div class="popup-body">
           <div class="left-image-container">
-            <img src="note/01_note.png" class="left-image" alt="説明画像">
+            <img id="noteImage" class="left-image" alt="説明画像">
             <button id="playBtn">▶</button>
           </div>
           <!-- 右側のアバター -->
@@ -459,6 +459,15 @@
       const playBtn = document.getElementById("playBtn");
       const avatar = document.getElementById("avatar");
       let mouthAnimation;
+      //1～15の整数乱数を発生（15パターン用意した「防災一口メモ」の中で、表示するものを乱数で発生させる）
+      const noteNo = Math.floor(Math.random() * 15) + 1;
+      // 01～15形式に変換
+      const noteStr = String(noteNo).padStart(2, "0");
+      // 画像ファイル設定
+      document.getElementById("noteImage").src = "note/" + noteStr + "_note.png";
+      // 音声ファイル設定
+      noteaudio.src = "note/" + noteStr + "_note.mp3";
+      //
       noteBtn.src ="icon/note-button.png"
       noteBtn.onclick = () => {
           popup.style.display = "block";
