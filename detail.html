@@ -479,6 +479,7 @@
           playBtn.style.display = "block";
       });
       function playNoteAudio(){
+        if(!noteaudio.paused) return;
         playBtn.style.display = "none";
         noteaudio.play();
         clearInterval(mouthAnimation);
