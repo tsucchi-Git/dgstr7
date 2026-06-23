@@ -476,6 +476,7 @@
           avatar.src = "icon/avatar_close.png";
       };
       playBtn.onclick = () => {
+          playBtn.style.display = "none";
           noteaudio.play();
           mouthAnimation = setInterval(() => {
               if (
@@ -491,6 +492,7 @@
           clearInterval(mouthAnimation);
           mouthAnimation = null;
           avatar.src = "icon/avatar_close.png";
+          playBtn.style.display = "block";
       });
     </script>
 </body>
