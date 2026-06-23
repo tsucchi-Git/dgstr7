@@ -135,17 +135,6 @@
       background:rgba(0,0,0,0.5);
     }
     .popup-content{
-      /* background:white; */
-      /* width:90%;      /* 固定幅 */ 
-      /* height:30%;     /* 固定高さ */ 
-      /* position:absolute;
-      left:50%;
-      top:50%;
-      transform:translate(-50%, -50%);
-      padding:20px;
-      text-align:center;
-      border-radius:10px;
-      box-sizing:border-box; */
       background:white;
       width:90%;
       height:30%;
@@ -172,9 +161,18 @@
         line-height:1;
     }
     #playBtn{
-      font-size:24px;
+      /* font-size:24px;
       padding:10px 20px;
-      margin-top:30px;
+      margin-top:30px; */
+      position:absolute;
+      left:50%;
+      top:50%;
+      transform:translate(-50%, -50%);
+  
+      width:70px;
+      height:70px;
+      border-radius:50%;
+      font-size:32px;
     }
     .popup-body{
       display:flex;
@@ -185,18 +183,15 @@
     }
     
     .left-image{
-      /* height:450px;
-      position:relative;
-      z-index:2;
-      margin-right:-10px; */
-      /* max-height:30%; */
-      /* height:200px;
-      width:auto; */
       height:auto;
       width:100%;
     }
     .left-image-container{
       flex:7;
+      position:relative;
+      display:flex;
+      justify-content:center;
+      align-items:center;
     }
     .right-area{
       flex:1;  /* 右を狭く */
@@ -295,6 +290,7 @@
         <div class="popup-body">
           <div class="left-image-container">
             <img src="note/01_note.png" class="left-image" alt="説明画像">
+            <button id="playBtn">▶</button>
           </div>
           <!-- 右側のアバター -->
           <div class="right-area">
@@ -307,7 +303,6 @@
               <source src="note/01_note.mp3" type="audio/mpeg">
             </audio>
               <br>
-              <button id="playBtn">▶</button>
           </div>
         </div>
   　　</div>
