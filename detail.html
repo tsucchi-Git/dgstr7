@@ -200,17 +200,12 @@
     }
     .right-area{
       flex:1;  /* 右を狭く */
-      /* display:flex;
-      flex-direction:column; */
-      /* align-items:flex-end; /* 右寄せ */ 
-      /* justify-content:center; */
     }
     .avatar{
       width:120px;
       height:auto;
-      /* width:275px;
-      height:365px; */
       object-fit:contain;
+      cursor:pointer;
      }  
  </style>
  <body>
@@ -475,25 +470,26 @@
           clearInterval(mouthAnimation);
           avatar.src = "icon/avatar_close.png";
       };
-      playBtn.onclick = () => {
-          playBtn.style.display = "none";
-          noteaudio.play();
-          mouthAnimation = setInterval(() => {
-              if (
-                  avatar.src.includes("icon/avatar_close.png")
-              ) {
-                  avatar.src = "icon/avatar_open.png";
-              } else {
-                  avatar.src = "icon/avatar_close.png";
-              }
-          }, 200);
-      };
+      playBtn.onclick = playNoteAudio;
+      avatar.onclick = playNoteAudio;
       noteaudio.addEventListener("ended", () => {
           clearInterval(mouthAnimation);
           mouthAnimation = null;
           avatar.src = "icon/avatar_close.png";
           playBtn.style.display = "block";
       });
+      function playNoteAudio(){
+        playBtn.style.display = "none";
+        noteaudio.play();
+        clearInterval(mouthAnimation);
+        mouthAnimation = setInterval(() => {
+            if (avatar.src.includes("icon/avatar_close.png")) {
+                avatar.src = "icon/avatar_open.png";
+            } else {
+                avatar.src = "icon/avatar_close.png";
+            }
+        }, 200);
+      }
     </script>
 </body>
 </html>
